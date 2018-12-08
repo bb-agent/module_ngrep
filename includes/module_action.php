@@ -46,11 +46,11 @@ if($service != "") {
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	    exec_fruitywifi($exec);
+	    exec_blackbulb($exec);
             
             $exec = "$bin_echo '' > $mod_logs";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	    exec_fruitywifi($exec);
+	    exec_blackbulb($exec);
         }
     
         // ADD selected options
@@ -69,23 +69,23 @@ if($service != "") {
         
         $exec = "$bin_grep -q -d $io_action -W byline $options -t $data >> $mod_logs &";        
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	exec_fruitywifi($exec);
+	exec_blackbulb($exec);
         
     } else if($action == "stop") {
         // STOP MODULE
         $exec = "$bin_killall ngrep";
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	exec_fruitywifi($exec);
+	exec_blackbulb($exec);
         
         // COPY LOG
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	    exec_fruitywifi($exec);
+	    exec_blackbulb($exec);
             
             $exec = "$bin_echo '' > $mod_logs";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	    exec_fruitywifi($exec);
+	    exec_blackbulb($exec);
         }
 
     }
@@ -96,11 +96,11 @@ if ($install == "install_ngrep") {
 
     $exec = "chmod 755 install.sh";
     //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     $exec = "$bin_sudo ./install.sh > $log_path/install.txt &";
     //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     header('Location: ../../install.php?module=ngrep');
     exit;

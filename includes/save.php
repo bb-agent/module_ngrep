@@ -53,13 +53,13 @@ if ($type == "mode_ngrep") {
     $tmp = array_keys($mode_ngrep);
     for ($i=0; $i< count($tmp); $i++) {
         $exec = "/bin/sed -i 's/mode_ngrep\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_ngrep\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 0;/g' options_config.php";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     }
 
     $tmp = $_POST["options"];
     for ($i=0; $i< count($tmp); $i++) {
         $exec = "/bin/sed -i 's/mode_ngrep\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_ngrep\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 1;/g' options_config.php";
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
     }
 
     header('Location: ../index.php?tab=1');
@@ -78,7 +78,7 @@ if ($type == "templates") {
 				$newdata = preg_replace("/[\n\r]/",  "", $newdata);
 				$template_path = "$mod_path/includes/templates";
         		$exec = "/bin/echo '$newdata' | base64 --decode > $template_path/$tempname";
-                exec_fruitywifi($exec);
+                exec_blackbulb($exec);
     		}
     	}
     	
@@ -89,7 +89,7 @@ if ($type == "templates") {
 			if ($new_rename_file != "") {
 				$template_path = "$mod_path/includes/templates";
 				$exec = "/bin/touch $template_path/$new_rename_file";
-                exec_fruitywifi($exec);
+                exec_blackbulb($exec);
 
 				$tempname=$new_rename_file;
 			}
@@ -97,7 +97,7 @@ if ($type == "templates") {
 			//RENAME TEMPLATE
 			$template_path = "$mod_path/includes/templates";
 			$exec = "/bin/mv $template_path/$new_rename $template_path/$new_rename_file";
-            exec_fruitywifi($exec);
+            exec_blackbulb($exec);
 
 			$tempname=$new_rename_file;
 		}
@@ -107,7 +107,7 @@ if ($type == "templates") {
 			//DELETE TEMPLATE
 			$template_path = "$mod_path/includes/templates";
 			$exec = "/bin/rm $template_path/$new_rename";
-            exec_fruitywifi($exec);
+            exec_blackbulb($exec);
 		}
 	}
 	header("Location: ../index.php?tab=2&tempname=$tempname");
