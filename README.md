@@ -1,7 +1,7 @@
 module_ngrep
 ===========
 
-FruityWiFi ngrep module
+BlackBlulb ngrep module
 
 
 v1.5
